@@ -1,0 +1,515 @@
+<html><head><base href=".">
+  <title>Pizzaria Del&#xed;cia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary-color: #b71c1c;
+      --secondary-color: #f9a825;
+      --text-color: #333;
+      --light-bg: #f5f5f5;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Playfair Display', serif;
+      line-height: 1.6;
+      color: var(--text-color);
+    }
+
+    .header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .header-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .order-button {
+      background-color: var(--secondary-color);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .order-button:hover {
+      background-color: #f57f17;
+      transform: scale(1.1);
+    }
+
+    .menu-section {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .delivery-info {
+      background-color: var(--light-bg);
+      padding: 2rem;
+      border-radius: 10px;
+      margin: 2rem 0;
+      text-align: center;
+    }
+
+    .delivery-info h3 {
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 2rem 0;
+    }
+
+    .menu-item {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+      cursor: pointer;
+    }
+
+    .menu-item:hover {
+      transform: translateY(-5px);
+    }
+
+    .menu-item-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .menu-item-content {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .menu-item-title {
+      font-size: 1.5rem;
+      color: var(--primary-color);
+      margin-bottom: 0.5rem;
+    }
+
+    .menu-item-description {
+      color: #666;
+      margin-bottom: 1rem;
+    }
+
+    .menu-item-price {
+      font-size: 1.25rem;
+      color: var(--secondary-color);
+      font-weight: bold;
+    }
+
+    .category-title {
+      text-align: center;
+      color: var(--primary-color);
+      font-size: 2rem;
+      margin: 2rem 0;
+      position: relative;
+    }
+
+    .category-title::after {
+      content: '';
+      display: block;
+      width: 100px;
+      height: 3px;
+      background-color: var(--secondary-color);
+      margin: 1rem auto;
+    }
+
+    .footer {
+      background-color: var(--primary-color);
+      color: white;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 4rem;
+    }
+
+    .footer p {
+      margin-bottom: 10px;
+    }
+
+    .footer .copyright {
+      font-size: 0.9em;
+      opacity: 0.9;
+    }
+
+    .social-link {
+      color: white;
+      font-size: 1.5rem;
+      margin-left: 10px;
+      transition: color 0.3s ease;
+    }
+
+    .social-link:hover {
+      color: var(--secondary-color);
+    }
+
+    .central-order-button {
+      display: block;
+      width: max-content;
+      margin: 2rem auto;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .menu-item {
+      animation: fadeIn 0.6s ease-out forwards;
+    }
+
+    @media (max-width: 768px) {
+      .menu-grid {
+        grid-template-columns: 1fr;
+      }
+      .header {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+
+    .modal {
+      display: none; 
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.7);
+      z-index: 2000;
+      overflow-y: auto; 
+      padding: 20px;
+    }
+
+    .modal-content {
+      background-color: white;
+      width: 90%;
+      max-width: 600px;
+      margin: 20px auto;
+      padding: 30px;
+      border-radius: 10px;
+      position: relative;
+    }
+
+    .modal-title {
+      color: var(--primary-color);
+      font-size: 2rem;
+      margin: 15px 0;
+    }
+
+    .modal .order-button {
+      display: block;
+      width: 100%;
+      margin-top: 20px;
+      font-size: 1.2rem;
+      padding: 15px;
+    }
+
+    .close-modal {
+      position: absolute;
+      right: 15px;
+      top: 15px;
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    .modal-image {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .star-rating {
+      color: #f9a825;
+      font-size: 24px;
+      margin: 15px 0;
+    }
+
+    .modal-price {
+      font-size: 24px;
+      color: var(--secondary-color);
+      margin: 15px 0;
+    }
+
+    .item-order-button {
+      background-color: var(--secondary-color);
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .item-order-button:hover {
+      background-color: #f57f17;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="header-title">
+      <i class="fas fa-pizza-slice"></i>
+      <h1>Pizzaria Del&#xed;cia</h1>
+    </div>
+    <button class="order-button">Fazer Pedido</button>
+  </header>
+
+  <main class="menu-section">
+    <div class="delivery-info">
+      <h3><i class="fas fa-motorcycle"></i> Entrega R&#xe1;pida e Segura</h3>
+      <p>Entregamos em toda a cidade! Pedido m&#xed;nimo: R&#x24; 30,00</p>
+      <p>Tempo m&#xe9;dio de entrega: 30-45 minutos</p>
+    </div>
+
+    <button class="order-button central-order-button">Fa&#xe7;a seu Pedido Agora!</button>
+
+    <h2 class="category-title">
+      <i class="fas fa-star pizza-icon"></i>
+      Nossas Pizzas Premium
+    </h2>
+
+    <div class="menu-grid">
+      <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38" alt="Pizza Margherita" class="menu-item-image">
+        <div class="menu-item-content">
+          <h3 class="menu-item-title">Margherita Especial</h3>
+          <p class="menu-item-description">Molho de tomate, mussarela de b&#xfa;fala, manjeric&#xe3;o fresco e azeite extra virgem</p>
+          <p class="menu-item-price">R&#x24; 45,90</p>
+          <button class="item-order-button">Fazer Pedido</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1552539618-7eec9b4d1796" alt="Pizza Pepperoni" class="menu-item-image">
+        <div class="menu-item-content">
+          <h3 class="menu-item-title">Pepperoni Supreme</h3>
+          <p class="menu-item-description">Generosa camada de pepperoni, mussarela e or&#xe9;gano</p>
+          <p class="menu-item-price">R&#x24; 49,90</p>
+          <button class="item-order-button">Fazer Pedido</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591" alt="Pizza Quatro Queijos" class="menu-item-image">
+        <div class="menu-item-content">
+          <h3 class="menu-item-title">Quattro Formaggi</h3>
+          <p class="menu-item-description">Mussarela, gorgonzola, parmes&#xe3;o e provolone</p>
+          <p class="menu-item-price">R&#x24; 52,90</p>
+          <button class="item-order-button">Fazer Pedido</button>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="category-title">
+      <i class="fas fa-fire pizza-icon"></i>
+      Pizzas Tradicionais
+    </h2>
+
+    <div class="menu-grid">
+      <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1571066811602-716837d681de" alt="Pizza Calabresa" class="menu-item-image">
+        <div class="menu-item-content">
+          <h3 class="menu-item-title">Calabresa</h3>
+          <p class="menu-item-description">Calabresa fatiada, cebola e azeitonas pretas</p>
+          <p class="menu-item-price">R&#x24; 39,90</p>
+          <button class="item-order-button">Fazer Pedido</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1595708684082-a173bb3a06c5" alt="Pizza Frango com Catupiry" class="menu-item-image">
+        <div class="menu-item-content">
+          <h3 class="menu-item-title">Frango com Catupiry</h3>
+          <p class="menu-item-description">Frango desfiado, catupiry original e milho</p>
+          <p class="menu-item-price">R&#x24; 42,90</p>
+          <button class="item-order-button">Fazer Pedido</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1570560258879-af7f8e1a4c70" alt="Pizza Portuguesa" class="menu-item-image">
+        <div class="menu-item-content">
+          <h3 class="menu-item-title">Portuguesa</h3>
+          <p class="menu-item-description">Presunto, ovos, cebola, ervilha e mussarela</p>
+          <p class="menu-item-price">R&#x24; 44,90</p>
+          <button class="item-order-button">Fazer Pedido</button>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="category-title">
+      <i class="fas fa-glass-whiskey pizza-icon"></i>
+      Bebidas
+    </h2>
+
+    <div class="menu-grid">
+      <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97" alt="Coca-Cola" class="menu-item-image">
+        <div class="menu-item-content">
+          <h3 class="menu-item-title">Coca-Cola 2L</h3>
+          <p class="menu-item-description">Refrigerante Coca-Cola Gelada</p>
+          <p class="menu-item-price">R&#x24; 12,90</p>
+          <button class="item-order-button">Fazer Pedido</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1497534446932-c925b458314e" alt="Cerveja" class="menu-item-image">
+        <div class="menu-item-content">
+          <h3 class="menu-item-title">Cerveja Artesanal</h3>
+          <p class="menu-item-description">Long Neck 355ml</p>
+          <p class="menu-item-price">R&#x24; 14,90</p>
+          <button class="item-order-button">Fazer Pedido</button>
+        </div>
+      </div>
+
+      <div class="menu-item">
+        <img src="https://images.unsplash.com/photo-1437418747212-8d9709afab22" alt="Suco Natural" class="menu-item-image">
+        <div class="menu-item-content">
+          <h3 class="menu-item-title">Suco Natural</h3>
+          <p class="menu-item-description">Laranja, Lim&#xe3;o ou Maracuj&#xe1;</p>
+          <p class="menu-item-price">R&#x24; 9,90</p>
+          <button class="item-order-button">Fazer Pedido</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p> 2025 Pizzaria Del&#xed;cia - Todos os direitos reservados</p>
+    <p class="copyright">byTORRESWEBSEC</p>
+    <a href="https://www.instagram.com/torreswebsec/" class="social-link" target="_blank">
+      <i class="fab fa-instagram"></i>
+    </a>
+  </footer>
+
+  <div class="modal" id="itemModal">
+    <div class="modal-content">
+      <span class="close-modal">&#xd7;</span>
+      <img class="modal-image" src alt>
+      <h2 class="modal-title"></h2>
+      <div class="star-rating">
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+        <i class="fas fa-star"></i>
+      </div>
+      <p class="modal-description"></p>
+      <p class="modal-price"></p>
+      <button class="order-button">Fazer Pedido</button>
+    </div>
+  </div>
+
+  <script>const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('show');
+    } else {
+      entry.target.classList.remove('show');
+    }
+  });
+}, {
+  threshold: 0.1
+});
+document.querySelectorAll('.menu-item').forEach(item => {
+  observer.observe(item);
+});
+document.querySelectorAll('.order-button').forEach(button => {
+  button.addEventListener('click', e => {
+    if(e.target.closest('.modal')) {
+      alert('Sistema de pedidos em desenvolvimento! Em breve você poderá fazer seus pedidos online.');
+    }
+  });
+});
+const modal = document.getElementById('itemModal');
+const modalImage = modal.querySelector('.modal-image');
+const modalTitle = modal.querySelector('.modal-title');
+const modalDescription = modal.querySelector('.modal-description');
+const modalPrice = modal.querySelector('.modal-price');
+function openModal(item) {
+  const image = item.querySelector('.menu-item-image').src;
+  const title = item.querySelector('.menu-item-title').textContent;
+  const description = item.querySelector('.menu-item-description').textContent; 
+  const price = item.querySelector('.menu-item-price').textContent;
+
+  modalImage.src = image;
+  modalImage.alt = title;
+  modalTitle.textContent = title;
+  modalDescription.textContent = description;
+  modalPrice.textContent = price;
+  
+  // Show modal
+  modal.style.display = 'block';
+  
+  // Prevent body scrolling
+  document.body.style.overflow = 'hidden';
+}
+modal.querySelector('.close-modal').onclick = () => {
+  modal.style.display = 'none';
+  document.body.style.overflow = 'auto';
+};
+
+window.onclick = event => {
+  if (event.target == modal) {
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+  }
+};
+document.querySelectorAll('.menu-item').forEach(item => {
+  item.addEventListener('click', e => {
+    if (!e.target.classList.contains('item-order-button')) {
+      openModal(item);
+    }
+  });
+});
+document.querySelectorAll('.item-order-button').forEach(button => {
+  button.addEventListener('click', e => {
+    e.stopPropagation();
+    alert('Sistema de pedidos em desenvolvimento! Em breve você poderá fazer seus pedidos online.');
+  });
+});</script>
+</body>
+</html>
