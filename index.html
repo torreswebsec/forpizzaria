@@ -1,5 +1,5 @@
 <html><head><base href=".">
-  <title>Pizzaria Del&#xed;cia</title>
+  <title>Pizzeria ROOT</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&amp;display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
@@ -285,49 +285,124 @@
       background-color: #f57f17;
       transform: scale(1.05);
     }
+
+    /* Add styles for quantity controls and notes */
+    .order-details {
+      margin: 20px 0;
+    }
+
+    .quantity-control {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 15px;
+    }
+
+    .qty-btn {
+      background: var(--secondary-color);
+      border: none;
+      color: white;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    #quantity {
+      width: 60px;
+      text-align: center;
+      font-size: 1.1em;
+      padding: 5px;
+    }
+
+    .order-notes {
+      width: 100%;
+      min-height: 100px;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    /* Add testimonials styles */
+    .testimonials {
+      background: var(--light-bg);
+      padding: 4rem 0;
+      margin-top: 4rem;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .testimonial {
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .testimonial-rating {
+      color: var(--secondary-color);
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .testimonial cite {
+      display: block;
+      margin-top: 1rem;
+      font-style: italic;
+      color: var(--primary-color);
+    }
   </style>
 </head>
 <body>
   <header class="header">
     <div class="header-title">
       <i class="fas fa-pizza-slice"></i>
-      <h1>Pizzaria Del&#xed;cia</h1>
+      <h1>Pizzeria ROOT</h1>
     </div>
-    <button class="order-button">Fazer Pedido</button>
+    <button class="order-button">Commander</button>
   </header>
 
   <main class="menu-section">
     <div class="delivery-info">
-      <h3><i class="fas fa-motorcycle"></i> Entrega R&#xe1;pida e Segura</h3>
-      <p>Entregamos em toda a cidade! Pedido m&#xed;nimo: R&#x24; 30,00</p>
-      <p>Tempo m&#xe9;dio de entrega: 30-45 minutos</p>
+      <h3><i class="fas fa-motorcycle"></i> Livraison Rapide et Sûre</h3>
+      <p>Nous livrons dans toute la ville! Commande minimum: 30,00 €</p>
+      <p>Temps de livraison moyen: 30-45 minutes</p>
     </div>
 
-    <button class="order-button central-order-button">Fa&#xe7;a seu Pedido Agora!</button>
+    <button class="order-button central-order-button">Commandez Maintenant!</button>
 
     <h2 class="category-title">
       <i class="fas fa-star pizza-icon"></i>
-      Nossas Pizzas Premium
+      Nos Pizzas Premium
     </h2>
 
     <div class="menu-grid">
       <div class="menu-item">
         <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38" alt="Pizza Margherita" class="menu-item-image">
         <div class="menu-item-content">
-          <h3 class="menu-item-title">Margherita Especial</h3>
-          <p class="menu-item-description">Molho de tomate, mussarela de b&#xfa;fala, manjeric&#xe3;o fresco e azeite extra virgem</p>
-          <p class="menu-item-price">R&#x24; 45,90</p>
-          <button class="item-order-button">Fazer Pedido</button>
+          <h3 class="menu-item-title">Margherita Spéciale</h3>
+          <p class="menu-item-description">Sauce tomate, mozzarella de bufflonne, basilic frais et huile d'olive extra vierge</p>
+          <p class="menu-item-price">45,90 €</p>
+          <button class="item-order-button">Commander</button>
         </div>
       </div>
 
       <div class="menu-item">
         <img src="https://images.unsplash.com/photo-1552539618-7eec9b4d1796" alt="Pizza Pepperoni" class="menu-item-image">
         <div class="menu-item-content">
-          <h3 class="menu-item-title">Pepperoni Supreme</h3>
-          <p class="menu-item-description">Generosa camada de pepperoni, mussarela e or&#xe9;gano</p>
-          <p class="menu-item-price">R&#x24; 49,90</p>
-          <button class="item-order-button">Fazer Pedido</button>
+          <h3 class="menu-item-title">Pepperoni Suprême</h3>
+          <p class="menu-item-description">Généreuse couche de pepperoni, mozzarella et origan</p>
+          <p class="menu-item-price">49,90 €</p>
+          <button class="item-order-button">Commander</button>
         </div>
       </div>
 
@@ -335,53 +410,53 @@
         <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591" alt="Pizza Quatro Queijos" class="menu-item-image">
         <div class="menu-item-content">
           <h3 class="menu-item-title">Quattro Formaggi</h3>
-          <p class="menu-item-description">Mussarela, gorgonzola, parmes&#xe3;o e provolone</p>
-          <p class="menu-item-price">R&#x24; 52,90</p>
-          <button class="item-order-button">Fazer Pedido</button>
+          <p class="menu-item-description">Mozzarella, gorgonzola, parmesan et provolone</p>
+          <p class="menu-item-price">52,90 €</p>
+          <button class="item-order-button">Commander</button>
         </div>
       </div>
     </div>
 
     <h2 class="category-title">
       <i class="fas fa-fire pizza-icon"></i>
-      Pizzas Tradicionais
+      Pizzas Traditionnelles
     </h2>
 
     <div class="menu-grid">
       <div class="menu-item">
         <img src="https://images.unsplash.com/photo-1571066811602-716837d681de" alt="Pizza Calabresa" class="menu-item-image">
         <div class="menu-item-content">
-          <h3 class="menu-item-title">Calabresa</h3>
-          <p class="menu-item-description">Calabresa fatiada, cebola e azeitonas pretas</p>
-          <p class="menu-item-price">R&#x24; 39,90</p>
-          <button class="item-order-button">Fazer Pedido</button>
+          <h3 class="menu-item-title">Calabraise</h3>
+          <p class="menu-item-description">Saucisse calabraise, oignons et olives noires</p>
+          <p class="menu-item-price">39,90 €</p>
+          <button class="item-order-button">Commander</button>
         </div>
       </div>
 
       <div class="menu-item">
         <img src="https://images.unsplash.com/photo-1595708684082-a173bb3a06c5" alt="Pizza Frango com Catupiry" class="menu-item-image">
         <div class="menu-item-content">
-          <h3 class="menu-item-title">Frango com Catupiry</h3>
-          <p class="menu-item-description">Frango desfiado, catupiry original e milho</p>
-          <p class="menu-item-price">R&#x24; 42,90</p>
-          <button class="item-order-button">Fazer Pedido</button>
+          <h3 class="menu-item-title">Poulet Crémeux</h3>
+          <p class="menu-item-description">Poulet émincé, fromage crémeux et maïs</p>
+          <p class="menu-item-price">42,90 €</p>
+          <button class="item-order-button">Commander</button>
         </div>
       </div>
 
       <div class="menu-item">
         <img src="https://images.unsplash.com/photo-1570560258879-af7f8e1a4c70" alt="Pizza Portuguesa" class="menu-item-image">
         <div class="menu-item-content">
-          <h3 class="menu-item-title">Portuguesa</h3>
-          <p class="menu-item-description">Presunto, ovos, cebola, ervilha e mussarela</p>
-          <p class="menu-item-price">R&#x24; 44,90</p>
-          <button class="item-order-button">Fazer Pedido</button>
+          <h3 class="menu-item-title">Portugaise</h3>
+          <p class="menu-item-description">Jambon, œufs, oignons, petits pois et mozzarella</p>
+          <p class="menu-item-price">44,90 €</p>
+          <button class="item-order-button">Commander</button>
         </div>
       </div>
     </div>
 
     <h2 class="category-title">
       <i class="fas fa-glass-whiskey pizza-icon"></i>
-      Bebidas
+      Boissons
     </h2>
 
     <div class="menu-grid">
@@ -389,36 +464,60 @@
         <img src="https://images.unsplash.com/photo-1622483767028-3f66f32aef97" alt="Coca-Cola" class="menu-item-image">
         <div class="menu-item-content">
           <h3 class="menu-item-title">Coca-Cola 2L</h3>
-          <p class="menu-item-description">Refrigerante Coca-Cola Gelada</p>
-          <p class="menu-item-price">R&#x24; 12,90</p>
-          <button class="item-order-button">Fazer Pedido</button>
+          <p class="menu-item-description">Coca-Cola Frais</p>
+          <p class="menu-item-price">12,90 €</p>
+          <button class="item-order-button">Commander</button>
         </div>
       </div>
 
       <div class="menu-item">
         <img src="https://images.unsplash.com/photo-1497534446932-c925b458314e" alt="Cerveja" class="menu-item-image">
         <div class="menu-item-content">
-          <h3 class="menu-item-title">Cerveja Artesanal</h3>
-          <p class="menu-item-description">Long Neck 355ml</p>
-          <p class="menu-item-price">R&#x24; 14,90</p>
-          <button class="item-order-button">Fazer Pedido</button>
+          <h3 class="menu-item-title">Bière Artisanale</h3>
+          <p class="menu-item-description">Bouteille 355ml</p>
+          <p class="menu-item-price">14,90 €</p>
+          <button class="item-order-button">Commander</button>
         </div>
       </div>
 
       <div class="menu-item">
         <img src="https://images.unsplash.com/photo-1437418747212-8d9709afab22" alt="Suco Natural" class="menu-item-image">
         <div class="menu-item-content">
-          <h3 class="menu-item-title">Suco Natural</h3>
-          <p class="menu-item-description">Laranja, Lim&#xe3;o ou Maracuj&#xe1;</p>
-          <p class="menu-item-price">R&#x24; 9,90</p>
-          <button class="item-order-button">Fazer Pedido</button>
+          <h3 class="menu-item-title">Jus Frais</h3>
+          <p class="menu-item-description">Orange, Citron ou Fruit de la Passion</p>
+          <p class="menu-item-price">9,90 €</p>
+          <button class="item-order-button">Commander</button>
         </div>
       </div>
     </div>
   </main>
 
+  <section class="testimonials">
+    <h2 class="category-title">
+      <i class="fas fa-comments"></i>
+      Avis de Nos Clients
+    </h2>
+    <div class="testimonials-grid">
+      <div class="testimonial">
+        <div class="testimonial-rating">★★★★★</div>
+        <p>"La meilleure pizza de la ville! Service impeccable."</p>
+        <cite>- Marie Dubois</cite>
+      </div>
+      <div class="testimonial">
+        <div class="testimonial-rating">★★★★★</div>
+        <p>"Livraison rapide et pizza toujours chaude!"</p>
+        <cite>- Jean Michel</cite>
+      </div>
+      <div class="testimonial">
+        <div class="testimonial-rating">★★★★★</div>
+        <p>"Un goût authentique qui me rappelle l'Italie."</p>
+        <cite>- Sophie Martin</cite>
+      </div>
+    </div>
+  </section>
+
   <footer class="footer">
-    <p> 2025 Pizzaria Del&#xed;cia - Todos os direitos reservados</p>
+    <p> 2025 Pizzeria ROOT - Tous droits réservés</p>
     <p class="copyright">byTORRESWEBSEC</p>
     <a href="https://www.instagram.com/torreswebsec/" class="social-link" target="_blank">
       <i class="fab fa-instagram"></i>
@@ -439,77 +538,116 @@
       </div>
       <p class="modal-description"></p>
       <p class="modal-price"></p>
-      <button class="order-button">Fazer Pedido</button>
+      <div class="order-details">
+        <div class="quantity-control">
+          <label for="quantity">Quantité:</label>
+          <button class="qty-btn minus">-</button>
+          <input type="number" id="quantity" value="1" min="1">
+          <button class="qty-btn plus">+</button>
+        </div>
+        <textarea placeholder="Notes spéciales" class="order-notes"></textarea>
+      </div>
+      <button class="order-button">Commander</button>
     </div>
   </div>
 
-  <script>const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('show');
-    } else {
-      entry.target.classList.remove('show');
-    }
-  });
-}, {
-  threshold: 0.1
-});
-document.querySelectorAll('.menu-item').forEach(item => {
-  observer.observe(item);
-});
-document.querySelectorAll('.order-button').forEach(button => {
-  button.addEventListener('click', e => {
-    if(e.target.closest('.modal')) {
-      alert('Sistema de pedidos em desenvolvimento! Em breve você poderá fazer seus pedidos online.');
-    }
-  });
-});
-const modal = document.getElementById('itemModal');
-const modalImage = modal.querySelector('.modal-image');
-const modalTitle = modal.querySelector('.modal-title');
-const modalDescription = modal.querySelector('.modal-description');
-const modalPrice = modal.querySelector('.modal-price');
-function openModal(item) {
-  const image = item.querySelector('.menu-item-image').src;
-  const title = item.querySelector('.menu-item-title').textContent;
-  const description = item.querySelector('.menu-item-description').textContent; 
-  const price = item.querySelector('.menu-item-price').textContent;
+  <script>
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        } else {
+          entry.target.classList.remove('show');
+        }
+      });
+    }, {
+      threshold: 0.1
+    });
+    document.querySelectorAll('.menu-item').forEach(item => {
+      observer.observe(item);
+    });
 
-  modalImage.src = image;
-  modalImage.alt = title;
-  modalTitle.textContent = title;
-  modalDescription.textContent = description;
-  modalPrice.textContent = price;
-  
-  // Show modal
-  modal.style.display = 'block';
-  
-  // Prevent body scrolling
-  document.body.style.overflow = 'hidden';
-}
-modal.querySelector('.close-modal').onclick = () => {
-  modal.style.display = 'none';
-  document.body.style.overflow = 'auto';
-};
+    function handleQuantity() {
+      const quantity = document.getElementById('quantity');
+      const minusBtn = document.querySelector('.minus');
+      const plusBtn = document.querySelector('.plus');
 
-window.onclick = event => {
-  if (event.target == modal) {
-    modal.style.display = 'none';
-    document.body.style.overflow = 'auto';
-  }
-};
-document.querySelectorAll('.menu-item').forEach(item => {
-  item.addEventListener('click', e => {
-    if (!e.target.classList.contains('item-order-button')) {
-      openModal(item);
+      minusBtn.addEventListener('click', () => {
+        const currentValue = parseInt(quantity.value);
+        if (currentValue > 1) {
+          quantity.value = currentValue - 1;
+        }
+      });
+
+      plusBtn.addEventListener('click', () => {
+        const currentValue = parseInt(quantity.value);
+        quantity.value = currentValue + 1;
+      });
     }
-  });
-});
-document.querySelectorAll('.item-order-button').forEach(button => {
-  button.addEventListener('click', e => {
-    e.stopPropagation();
-    alert('Sistema de pedidos em desenvolvimento! Em breve você poderá fazer seus pedidos online.');
-  });
-});</script>
+
+    document.querySelectorAll('.order-button').forEach(button => {
+      button.addEventListener('click', e => {
+        if(e.target.closest('.modal')) {
+          const quantity = document.getElementById('quantity').value;
+          const notes = document.querySelector('.order-notes').value;
+          alert(`Système de commande en développement! Quantité: ${quantity}, Notes: ${notes}`);
+        }
+      });
+    });
+
+    const modal = document.getElementById('itemModal');
+    const modalImage = modal.querySelector('.modal-image');
+    const modalTitle = modal.querySelector('.modal-title');
+    const modalDescription = modal.querySelector('.modal-description');
+    const modalPrice = modal.querySelector('.modal-price');
+
+    function openModal(item) {
+      const image = item.querySelector('.menu-item-image').src;
+      const title = item.querySelector('.menu-item-title').textContent;
+      const description = item.querySelector('.menu-item-description').textContent; 
+      const price = item.querySelector('.menu-item-price').textContent;
+
+      modalImage.src = image;
+      modalImage.alt = title;
+      modalTitle.textContent = title;
+      modalDescription.textContent = description;
+      modalPrice.textContent = price;
+      
+      document.getElementById('quantity').value = 1;
+      document.querySelector('.order-notes').value = '';
+      
+      handleQuantity();
+      
+      modal.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+
+    modal.querySelector('.close-modal').onclick = () => {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    };
+
+    window.onclick = event => {
+      if (event.target == modal) {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+    };
+
+    document.querySelectorAll('.menu-item').forEach(item => {
+      item.addEventListener('click', e => {
+        if (!e.target.classList.contains('item-order-button')) {
+          openModal(item);
+        }
+      });
+    });
+
+    document.querySelectorAll('.item-order-button').forEach(button => {
+      button.addEventListener('click', e => {
+        e.stopPropagation();
+        alert('Système de commande en développement! Bientôt disponible.');
+      });
+    });
+  </script>
 </body>
 </html>
